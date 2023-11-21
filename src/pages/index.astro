@@ -1,0 +1,80 @@
+---
+import Header from "../components/Header.astro";
+import Layout from "../layouts/Layout.astro";
+import CardFull from "../components/CardFull.astro"
+import CardHalf from "../components/CardHalf.astro";
+import CardSM from "../components/CardSM.astro";
+
+
+interface Props{
+    name: string;
+    degree: string;
+    presentation: string;
+    cert?:string;
+	bio:string;
+}
+
+const {
+    name = "Alan Vidal",
+    degree = "Product design Engineer",
+    presentation= "Senior Lecture with 5+ years guiding 1500+ students in Engineering & Design. Co-creator of Spark Innovation Kit & Co-founder of Loyka.Studio.",
+	cert="📝 Google Certification",
+	bio="public/AlanVidal.png",
+} = Astro.props;
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	
+	<Layout>
+		<main>
+			<Header/>
+			<!-- BREACKPOINTS -->
+<!--
+			<div>
+				<div class="flex max-sm:hidden max-md:hidden max-lg:hidden bg-gray-600 text-white font-bold align-center justify-center rounded-lg py-5">
+					<p>XL</p>
+				</div>
+				<div class="flex max-md:hidden lg:hidden bg-blue-600  text-white font-bold align-center justify-center rounded-lg py-5">
+					<p>MD</p>
+				</div>
+				<div class="flex md:hidden bg-red-600 text-white font-bold align-center justify-center rounded-lg py-5">
+					<p>SM</p>
+				</div>
+			</div>
+			-->
+
+			<!-- HERO -->
+			<div>
+				<div class="lg:hidden">
+					<CardSM name={name} subTitle={degree} body={presentation} cert={cert}/>
+				</div>
+				<div class="max-sm:hidden max-md:hidden max-lg:hidden">
+					<CardFull name={name} subTitle={degree} body={presentation} cert={cert} image={bio}/>
+				</div>
+			</div>
+			
+			
+			<!-- ABOUT & WORK -->
+			<!-- flex flex-col sm:flex-row justify-between gap-5  -->
+			<div class="flex flex-col lg:flex-row lg:gap-5">
+				<CardHalf title="About" subTitle="From 🇨🇱" body="I was born in Chiloe, grow up in Temuco and study & work in Vina del Mar" image="public/landScape.png"/>
+				<CardHalf title="Work experience" subTitle="Product Engineer & Senior Lecture" body="Senior Lecturer ~ Project Manager ~ Chief Design Office" image="public/unuiView.png"/>
+			</div>
+			
+			<!-- PROJECTS -->
+			<div class="flex">
+
+			</div>
+
+		</main>
+	</Layout>
+	
+</html>

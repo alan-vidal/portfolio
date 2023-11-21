@@ -1,0 +1,53 @@
+---
+interface Props{
+    name: string;
+    subTitle: string;
+    body: string;
+    cert?: string;
+    image: string;
+
+}
+
+const {
+    name = "Alan",
+    subTitle = "Bachelor Degree",
+    body = "Introduction",
+    cert="",
+    image = "public/AlanVidal.png",
+} = Astro.props;
+---
+
+<!--Full Card w/img on right-->
+
+<div class=" my-5 bg-white rounded-xl shadow-lg overflow-hidden flex h-[80vh]" >
+    <!-- Text left -->
+    <div class="m-20 flex flex-col w-1/2 ">
+
+        <div class="h-1/2 max-sm:hidden max-md:hidden max-lg:hidden">
+        <!-- Blanck Space-->
+        </div>
+
+        <div class="flex flex-col justify-start h-1/2 max-sm:justify-end max-sm: max-md:justify-items-center">
+            <h1 class="font-bold text-5xl py-1">
+                {name}
+            </h1>
+            <h2 class="font-bold text-2xl">
+                {subTitle}
+            </h2>
+            <p class="font-thin py-2">
+                {body}
+            </p>
+            <span class="font-thin py-10">
+                {cert} 
+            </span>
+        </div>
+
+    </div>
+    
+    <!--invisible sm:visible -->
+    <div class="w-1/2 max-sm:hidden max-md:hidden max-lg:hidden ">
+    <!-- img rigt -->
+        <img src={image} alt="Alan" class="h-full object-cover justify-end ">
+    </div>
+
+</div>
